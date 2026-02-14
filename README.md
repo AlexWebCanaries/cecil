@@ -2,6 +2,10 @@
 
 Privacy-first Python SDK for local LLM cost and cache analysis with optional telemetry export.
 
+## License
+
+Licensed under MIT. See `/Users/alexmilman/Dev/cecil/LICENSE`.
+
 ## Install
 
 ```bash
@@ -26,6 +30,8 @@ make lint
 make typecheck
 make test
 make build
+twine check dist/*
+python scripts/smoke_check_wheel.py
 ```
 
 ## Documentation

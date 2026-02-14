@@ -24,4 +24,8 @@ jobs:
           pip install -e '.[dev]'
           pip install openai==${{ matrix.openai-version }} anthropic==${{ matrix.anthropic-version }}
       - name: Contract tests
-        run: pytest -q tests/compat/test_provider_contracts.py
+        env:
+          LLM_OBSERVER_RUN_COMPAT: "1"
+          EXPECTED_OPENAI_VERSION: ${{ matrix.openai-version }}
+          EXPECTED_ANTHROPIC_VERSION: ${{ matrix.anthropic-version }}
+        run: pytest -q --no-cov tests/compat/test_provider_contracts.py

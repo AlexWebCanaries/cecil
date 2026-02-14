@@ -8,12 +8,15 @@ version = "0.1.0"
 description = "Lightweight LLM observability SDK with privacy-first defaults"
 readme = "README.md"
 requires-python = ">=3.9"
-license = "MIT"
+license = { text = "MIT" }
 authors = [{ name = "LLM Observer Team" }]
 keywords = ["llm", "observability", "telemetry", "openai", "anthropic"]
 classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Intended Audience :: Developers",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Software Development :: Libraries :: Python Modules",
   "Operating System :: OS Independent",
 ]
 dependencies = [
@@ -28,6 +31,12 @@ dev = [
   "pytest-cov>=5.0.0",
   "ruff>=0.6.4",
 ]
+
+[project.urls]
+Homepage = "https://github.com/alexmilman/cecil"
+Repository = "https://github.com/alexmilman/cecil"
+Issues = "https://github.com/alexmilman/cecil/issues"
+Documentation = "https://github.com/alexmilman/cecil/tree/main/docs"
 
 [tool.setuptools]
 package-dir = {"" = "sdk/python"}

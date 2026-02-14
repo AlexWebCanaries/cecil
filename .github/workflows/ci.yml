@@ -19,6 +19,17 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -e '.[dev]'
-          pip install build
+          pip install build twine
       - name: Quality gates
         run: make ci
+      - name: Artifact sanity
+        run: |
+          python -m build
+          twine check dist/*
+      - name: Wheel install smoke (isolated)
+        run: |
+          python -m venv .venv-wheel-smoke
+          . .venv-wheel-smoke/bin/activate
+          python -m pip install --upgrade pip
+          pip install dist/*.whl
+          python scripts/smoke_check_wheel.py
