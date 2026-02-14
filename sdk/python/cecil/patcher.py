@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import threading
 from dataclasses import dataclass
+from typing import Callable
 
 from cecil.adapters.anthropic_adapter import patch_anthropic
 from cecil.adapters.openai_adapter import patch_openai
@@ -19,6 +21,37 @@ class PatchResult:
 _TELEMETRY: TelemetryClient | None = None
 _OPENAI_PATCHED = False
 _ANTHROPIC_PATCHED = False
+_EVENT_LISTENERS: dict[int, Callable[[dict[str, object]], None]] = {}
+_EVENT_LISTENER_LOCK = threading.Lock()
+_NEXT_LISTENER_ID = 1
+
+
+def register_event_listener(listener: Callable[[dict[str, object]], None]) -> int:
+    global _NEXT_LISTENER_ID
+    with _EVENT_LISTENER_LOCK:
+        listener_id = _NEXT_LISTENER_ID
+        _NEXT_LISTENER_ID += 1
+        _EVENT_LISTENERS[listener_id] = listener
+    return listener_id
+
+
+def unregister_event_listener(listener_id: int) -> None:
+    with _EVENT_LISTENER_LOCK:
+        _EVENT_LISTENERS.pop(listener_id, None)
+
+
+def emit_event(event: dict[str, object], telemetry: TelemetryClient) -> None:
+    logger = get_logger()
+    with _EVENT_LISTENER_LOCK:
+        listeners = list(_EVENT_LISTENERS.values())
+
+    for listener in listeners:
+        try:
+            listener(event)
+        except Exception as exc:
+            logger.debug("local event listener failed err=%s", type(exc).__name__)
+
+    telemetry.emit(event)
 
 
 def patch(config: ObserverConfig | None = None) -> PatchResult:
@@ -51,9 +84,12 @@ def patch(config: ObserverConfig | None = None) -> PatchResult:
 
 
 def shutdown(timeout: float = 1.0, drain: bool = True) -> None:
-    global _TELEMETRY, _OPENAI_PATCHED, _ANTHROPIC_PATCHED
+    global _TELEMETRY, _OPENAI_PATCHED, _ANTHROPIC_PATCHED, _NEXT_LISTENER_ID
     if _TELEMETRY is not None:
         _TELEMETRY.stop(timeout=timeout, drain=drain)
     _TELEMETRY = None
     _OPENAI_PATCHED = False
     _ANTHROPIC_PATCHED = False
+    with _EVENT_LISTENER_LOCK:
+        _EVENT_LISTENERS.clear()
+        _NEXT_LISTENER_ID = 1

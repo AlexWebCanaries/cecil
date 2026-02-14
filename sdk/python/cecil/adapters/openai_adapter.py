@@ -49,7 +49,9 @@ def patch_openai(config: ObserverConfig, telemetry: TelemetryClient) -> bool:
                 ),
                 config=config,
             )
-            telemetry.emit(event)
+            from cecil import patcher as patcher_module
+
+            patcher_module.emit_event(event, telemetry)
         except Exception as exc:
             logger.debug("openai instrumentation failed err=%s", type(exc).__name__)
 

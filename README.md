@@ -18,6 +18,24 @@ cecil.patch()
 
 Default behavior is local-only. No telemetry is sent unless explicitly enabled.
 
+## Usage Analytics Report
+
+```python
+import cecil
+from openai import OpenAI
+
+session = cecil.start_session()
+client = OpenAI()
+client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": "Summarize this SDK in one sentence."}],
+)
+
+session.print_report(usd_decimals=8)
+session.save_json("cecil_usage_report.json", usd_decimals=8)
+session.close()
+```
+
 ## Why Cecil
 
 - Privacy-first defaults (hashed metadata, no raw prompt export by default)

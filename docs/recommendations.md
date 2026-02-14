@@ -25,3 +25,17 @@ event = build_event(
 )
 print(event["recommendation"])
 ```
+
+Session-level reporting:
+
+```python
+import cecil
+
+session = cecil.start_session()
+
+# run provider calls
+
+session.print_report(usd_decimals=8)
+session.save_json("cecil_usage_report.json", usd_decimals=8)
+session.close()
+```
