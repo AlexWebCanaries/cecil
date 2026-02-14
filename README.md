@@ -17,6 +17,7 @@ cecil.patch()
 ```
 
 Default behavior is local-only. No telemetry is sent unless explicitly enabled.
+Current instrumentation targets synchronous provider clients.
 
 ## Usage Analytics Report
 
@@ -42,6 +43,12 @@ session.close()
 - Fail-open instrumentation (SDK failures do not break provider calls)
 - Actionable cost and cache opportunity analytics
 - Lightweight integration (`import cecil; cecil.patch()`)
+
+## Current Scope
+
+- OpenAI sync path: `openai.resources.chat.completions.Completions.create`
+- Anthropic sync path: `anthropic.resources.messages.Messages.create`
+- Async provider clients are not instrumented in the current release.
 
 ## Development
 

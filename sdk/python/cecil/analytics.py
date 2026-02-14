@@ -139,7 +139,10 @@ class UsageSession:
             if isinstance(breakers_raw, list):
                 for item in breakers_raw:
                     if isinstance(item, dict):
-                        breaker_type = item.get("type")
+                        # Current schema uses "category"; keep "type" for backward compatibility.
+                        breaker_type = item.get("category")
+                        if not isinstance(breaker_type, str) or not breaker_type:
+                            breaker_type = item.get("type")
                         if isinstance(breaker_type, str) and breaker_type:
                             self._breaker_counts[breaker_type] += 1
 

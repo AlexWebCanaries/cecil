@@ -100,3 +100,30 @@ def test_usage_session_print_table_has_money(fake_openai_module, capsys) -> None
     assert "Cecil Usage Analytics" in output
     assert "Estimated cost:" in output
     assert "$" in output
+
+
+def test_usage_session_reports_cache_breakers_by_category(fake_openai_module) -> None:  # type: ignore[no-untyped-def]
+    session = cecil.start_session(auto_patch=True, max_events=5)
+
+    module = importlib.import_module("openai.resources.chat.completions")
+    client = module.Completions()
+    client.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "user",
+                "content": "system guidance request_id=ABCD1234EFGH5678 now=2026-01-01T00:00:00",
+            }
+        ],
+    )
+
+    report = session.report_dict()
+    session.close()
+
+    cache = report["cache"]
+    assert isinstance(cache, dict)
+    top_breakers = cache["top_cache_breakers"]
+    assert isinstance(top_breakers, list)
+    types = [item.get("type") for item in top_breakers if isinstance(item, dict)]
+    assert "random_id" in types
+    assert "timestamp" in types

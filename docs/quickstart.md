@@ -15,6 +15,8 @@ import cecil
 cecil.patch()
 ```
 
+Note: current SDK instrumentation targets synchronous provider client methods.
+
 3. Run your existing OpenAI/Anthropic code. SDK failures are fail-open and do not block LLM calls.
 
 4. Print and save local usage analytics:

@@ -30,3 +30,4 @@
 ## Known limitations
 - Cost estimation is fixture-based and model coverage is not exhaustive.
 - Adapter patching is best-effort and relies on provider SDK internals.
+- Async provider SDK clients are not instrumented in the current release.
