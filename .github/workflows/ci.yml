@@ -22,6 +22,8 @@ jobs:
           pip install build twine
       - name: Quality gates
         run: make ci
+      - name: Packaging warning regression guard
+        run: python scripts/check_build_warnings.py
       - name: Artifact sanity
         run: |
           python -m build

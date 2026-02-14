@@ -49,11 +49,14 @@ dmypy.json
 # Virtual environments
 .env
 .venv
+.python-version
+.venv-*/
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+.venv-wheel-smoke*/
 
 # IDE/editor files
 .vscode/
@@ -66,6 +69,10 @@ venv.bak/
 *.swp
 *.swo
 *~
+.ipynb_checkpoints/
+
+# Local shell environment
+.direnv/
 
 # OS files
 .DS_Store
@@ -87,4 +94,3 @@ pip-wheel-metadata/
 
 # Automation / task runtime
 .codex/
-

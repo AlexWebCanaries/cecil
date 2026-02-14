@@ -19,6 +19,8 @@ jobs:
           pip install -e '.[dev]' build twine
       - name: Validate
         run: make ci
+      - name: Packaging warning regression guard
+        run: python scripts/check_build_warnings.py
       - name: Build artifacts
         run: make build
       - name: Validate distribution metadata

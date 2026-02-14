@@ -32,6 +32,7 @@ make test
 make build
 twine check dist/*
 python scripts/smoke_check_wheel.py
+make release-dry-run
 ```
 
 ## Documentation
@@ -47,3 +48,4 @@ python scripts/smoke_check_wheel.py
 - `docs/recommendations.md`
 - `docs/performance-budget.md`
 - `docs/savings-model.md`
+- `docs/live-tests.md`
