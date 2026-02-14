@@ -31,10 +31,10 @@ jobs:
           . .venv-testpypi/bin/activate
           python -m pip install --upgrade pip
           VERSION=$(python - <<'PY'
-import tomllib
-with open('pyproject.toml', 'rb') as f:
-    print(tomllib.load(f)['project']['version'])
-PY
-)
+          import tomllib
+          with open('pyproject.toml', 'rb') as f:
+              print(tomllib.load(f)['project']['version'])
+          PY
+          )
           pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple cecil-sdk==${VERSION}
           python -c "import cecil; from cecil.cost import load_pricing_catalog; from cecil.schema import load_schema; print(cecil.__all__); print(load_pricing_catalog().version); print(load_schema()['properties']['schema_version']['const'])"
