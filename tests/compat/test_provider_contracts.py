@@ -5,7 +5,7 @@ from importlib.metadata import version
 
 import pytest
 
-RUN_COMPAT = os.getenv("LLM_OBSERVER_RUN_COMPAT") == "1"
+RUN_COMPAT = os.getenv("CECIL_RUN_COMPAT") == "1"
 pytestmark = pytest.mark.skipif(
     not RUN_COMPAT,
     reason="Compatibility checks run in dedicated provider-compat CI workflow.",

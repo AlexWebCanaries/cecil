@@ -3,14 +3,14 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "llm-observer"
+name = "cecil-sdk"
 version = "0.1.0"
 description = "Lightweight LLM observability SDK with privacy-first defaults"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
 license-files = ["LICENSE"]
-authors = [{ name = "LLM Observer Team" }]
+authors = [{ name = "Cecil SDK Team" }]
 keywords = ["llm", "observability", "telemetry", "openai", "anthropic"]
 classifiers = [
   "Intended Audience :: Developers",
@@ -39,10 +39,10 @@ live_openai = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/alexmilman/cecil"
-Repository = "https://github.com/alexmilman/cecil"
-Issues = "https://github.com/alexmilman/cecil/issues"
-Documentation = "https://github.com/alexmilman/cecil/tree/main/docs"
+Homepage = "https://github.com/cecil-sdk/cecil-python"
+Repository = "https://github.com/cecil-sdk/cecil-python"
+Issues = "https://github.com/cecil-sdk/cecil-python/issues"
+Documentation = "https://github.com/cecil-sdk/cecil-python/tree/main/docs"
 
 [tool.setuptools]
 package-dir = {"" = "sdk/python"}
@@ -51,10 +51,10 @@ package-dir = {"" = "sdk/python"}
 where = ["sdk/python"]
 
 [tool.setuptools.package-data]
-llm_observer = ["data/*.json"]
+cecil = ["data/*.json"]
 
 [tool.pytest.ini_options]
-addopts = "-q --cov=llm_observer --cov-report=term-missing --cov-fail-under=85"
+addopts = "-q --cov=cecil --cov-report=term-missing --cov-fail-under=85"
 testpaths = ["tests"]
 
 [tool.ruff]
@@ -70,7 +70,7 @@ line-length = 100
 [tool.mypy]
 python_version = "3.9"
 strict = true
-packages = ["llm_observer"]
+packages = ["cecil"]
 mypy_path = "sdk/python"
 warn_unused_configs = true
 

@@ -9,8 +9,8 @@ Each event includes `recommendation` with:
 Usage:
 
 ```python
-from llm_observer.event_model import EventContext, build_event
-from llm_observer.config import load_config
+from cecil.event_model import EventContext, build_event
+from cecil.config import load_config
 
 event = build_event(
     EventContext(

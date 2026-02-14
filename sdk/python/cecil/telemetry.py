@@ -9,8 +9,8 @@ import urllib.error
 import urllib.request
 from dataclasses import dataclass
 
-from llm_observer.config import ObserverConfig
-from llm_observer.logging import get_logger, scrub
+from cecil.config import ObserverConfig
+from cecil.logging import get_logger, scrub
 
 
 @dataclass
@@ -33,7 +33,7 @@ class TelemetryClient:
         if not config.local_only:
             self._worker = threading.Thread(
                 target=self._run,
-                name="llm-observer-telemetry",
+                name="cecil-sdk-telemetry",
                 daemon=True,
             )
             self._worker.start()

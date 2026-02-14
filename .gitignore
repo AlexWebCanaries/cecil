@@ -94,3 +94,6 @@ pip-wheel-metadata/
 
 # Automation / task runtime
 .codex/
+
+# Local agent skills/instructions (kept locally, not published)
+agents/

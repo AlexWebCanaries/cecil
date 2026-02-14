@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from llm_observer.cost import estimate_cost_usd
+from cecil.cost import estimate_cost_usd
 
 
 def test_cost_estimate_known_model() -> None:

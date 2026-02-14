@@ -43,22 +43,22 @@ class ObserverConfig:
 
 
 def load_config() -> ObserverConfig:
-    enabled = _read_bool("LLM_OBSERVER_ENABLED", False)
-    api_key = os.getenv("LLM_OBSERVER_API_KEY")
-    endpoint = os.getenv("LLM_OBSERVER_ENDPOINT")
+    enabled = _read_bool("CECIL_ENABLED", False)
+    api_key = os.getenv("CECIL_API_KEY")
+    endpoint = os.getenv("CECIL_ENDPOINT")
 
-    sampling_rate = max(0.0, min(1.0, _read_float("LLM_OBSERVER_SAMPLING_RATE", 1.0)))
-    raw_privacy_mode = os.getenv("LLM_OBSERVER_PRIVACY_MODE", "hash_only").strip().lower()
+    sampling_rate = max(0.0, min(1.0, _read_float("CECIL_SAMPLING_RATE", 1.0)))
+    raw_privacy_mode = os.getenv("CECIL_PRIVACY_MODE", "hash_only").strip().lower()
     privacy_mode = raw_privacy_mode if raw_privacy_mode in {"hash_only"} else "hash_only"
-    redaction_mode = os.getenv("LLM_OBSERVER_REDACTION_MODE", "strict")
-    snippets_enabled = _read_bool("LLM_OBSERVER_SNIPPETS_ENABLED", False)
+    redaction_mode = os.getenv("CECIL_REDACTION_MODE", "strict")
+    snippets_enabled = _read_bool("CECIL_SNIPPETS_ENABLED", False)
 
-    queue_size_raw = os.getenv("LLM_OBSERVER_QUEUE_SIZE", "256")
-    timeout_raw = os.getenv("LLM_OBSERVER_TIMEOUT_SECONDS", "2.0")
-    retry_raw = os.getenv("LLM_OBSERVER_RETRY_BUDGET", "3")
-    history_raw = os.getenv("LLM_OBSERVER_HISTORY_SIZE", "512")
-    savings_factor_raw = os.getenv("LLM_OBSERVER_SAVINGS_FACTOR", "0.3")
-    savings_min_similarity_raw = os.getenv("LLM_OBSERVER_SAVINGS_MIN_SIMILARITY", "0.15")
+    queue_size_raw = os.getenv("CECIL_QUEUE_SIZE", "256")
+    timeout_raw = os.getenv("CECIL_TIMEOUT_SECONDS", "2.0")
+    retry_raw = os.getenv("CECIL_RETRY_BUDGET", "3")
+    history_raw = os.getenv("CECIL_HISTORY_SIZE", "512")
+    savings_factor_raw = os.getenv("CECIL_SAVINGS_FACTOR", "0.3")
+    savings_min_similarity_raw = os.getenv("CECIL_SAVINGS_MIN_SIMILARITY", "0.15")
 
     try:
         queue_size = max(1, int(queue_size_raw))

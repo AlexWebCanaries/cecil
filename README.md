@@ -1,51 +1,50 @@
-# llm-observer
+# Cecil Python SDK
 
-Privacy-first Python SDK for local LLM cost and cache analysis with optional telemetry export.
-
-## License
-
-Licensed under MIT. See `/Users/alexmilman/Dev/cecil/LICENSE`.
+`cecil-sdk` is a privacy-first Python SDK for LLM cost visibility and cache optimization insights.
 
 ## Install
 
 ```bash
-pip install llm-observer
+pip install cecil-sdk
 ```
 
 ## Quickstart
 
 ```python
-import llm_observer
+import cecil
 
-llm_observer.patch()
+cecil.patch()
 ```
 
-By default, SDK runs in local-only mode and does not send telemetry.
+Default behavior is local-only. No telemetry is sent unless explicitly enabled.
 
-## Quality gates
+## Why Cecil
+
+- Privacy-first defaults (hashed metadata, no raw prompt export by default)
+- Fail-open instrumentation (SDK failures do not break provider calls)
+- Actionable cost and cache opportunity analytics
+- Lightweight integration (`import cecil; cecil.patch()`)
+
+## Development
 
 ```bash
-pip install -e '.[dev]'
+pip install -e ".[dev]"
 make lint
 make typecheck
 make test
 make build
-twine check dist/*
+python -m twine check dist/*
 python scripts/smoke_check_wheel.py
-make release-dry-run
 ```
 
 ## Documentation
 
 - `docs/quickstart.md`
 - `docs/telemetry-opt-in.md`
-- `docs/troubleshooting.md`
-- `docs/compatibility-matrix.md`
-- `docs/security-checklist.md`
-- `docs/release-checklist.md`
 - `docs/privacy-contract.md`
-- `docs/pricing-policy.md`
 - `docs/recommendations.md`
-- `docs/performance-budget.md`
-- `docs/savings-model.md`
-- `docs/live-tests.md`
+- `docs/release-checklist.md`
+
+## License
+
+MIT. See `LICENSE`.

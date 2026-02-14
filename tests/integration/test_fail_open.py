@@ -2,15 +2,15 @@ from __future__ import annotations
 
 import importlib
 
-from llm_observer.config import ObserverConfig
-from llm_observer.patcher import patch
+from cecil.config import ObserverConfig
+from cecil.patcher import patch
 
 
 def test_provider_call_survives_analyzer_failure(fake_openai_module, monkeypatch) -> None:  # type: ignore[no-untyped-def]
     def boom(*args: object, **kwargs: object) -> dict[str, object]:
         raise RuntimeError("boom")
 
-    monkeypatch.setattr("llm_observer.adapters.openai_adapter.build_event", boom)
+    monkeypatch.setattr("cecil.adapters.openai_adapter.build_event", boom)
 
     config = ObserverConfig(
         enabled=False,
@@ -42,7 +42,7 @@ def test_provider_call_survives_sender_failure(fake_anthropic_module, monkeypatc
     def emit_fail(self, event: dict[str, object]) -> None:  # type: ignore[no-untyped-def]
         raise RuntimeError("send fail")
 
-    monkeypatch.setattr("llm_observer.telemetry.TelemetryClient.emit", emit_fail)
+    monkeypatch.setattr("cecil.telemetry.TelemetryClient.emit", emit_fail)
 
     config = ObserverConfig(
         enabled=False,

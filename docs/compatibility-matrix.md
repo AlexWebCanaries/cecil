@@ -14,9 +14,9 @@
   - `anthropic.resources.messages.Messages.create`
 
 ### CI Mapping
-- Workflow: [`provider-compat.yml`](/Users/alexmilman/Dev/cecil/.github/workflows/provider-compat.yml)
+- Workflow: `.github/workflows/provider-compat.yml`
 - Job: `matrix`
-- Test file: `/Users/alexmilman/Dev/cecil/tests/compat/test_provider_contracts.py`
+- Test file: `tests/compat/test_provider_contracts.py`
 - Enforcement:
   - installs pinned provider SDK versions from matrix
   - sets expected version env vars

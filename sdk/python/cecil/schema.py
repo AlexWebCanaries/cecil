@@ -9,7 +9,7 @@ import jsonschema
 
 
 def schema_path() -> Path:
-    with resources.as_file(resources.files("llm_observer.data") / "telemetry_event_v1.json") as p:
+    with resources.as_file(resources.files("cecil.data") / "telemetry_event_v1.json") as p:
         return p
 
 

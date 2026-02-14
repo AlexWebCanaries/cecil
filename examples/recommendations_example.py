@@ -1,5 +1,5 @@
-from llm_observer.config import load_config
-from llm_observer.event_model import EventContext, build_event
+from cecil.config import load_config
+from cecil.event_model import EventContext, build_event
 
 config = load_config()
 event = build_event(

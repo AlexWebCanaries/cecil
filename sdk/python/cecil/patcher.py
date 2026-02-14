@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from llm_observer.adapters.anthropic_adapter import patch_anthropic
-from llm_observer.adapters.openai_adapter import patch_openai
-from llm_observer.config import ObserverConfig, load_config
-from llm_observer.logging import get_logger
-from llm_observer.telemetry import TelemetryClient
+from cecil.adapters.anthropic_adapter import patch_anthropic
+from cecil.adapters.openai_adapter import patch_openai
+from cecil.config import ObserverConfig, load_config
+from cecil.logging import get_logger
+from cecil.telemetry import TelemetryClient
 
 
 @dataclass(frozen=True)

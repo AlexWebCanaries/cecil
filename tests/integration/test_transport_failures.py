@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import time
 
-from llm_observer.config import ObserverConfig
-from llm_observer.telemetry import TelemetryClient
+from cecil.config import ObserverConfig
+from cecil.telemetry import TelemetryClient
 
 
 def test_endpoint_down_respects_retry_budget() -> None:

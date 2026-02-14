@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from llm_observer.config import ObserverConfig
-from llm_observer.event_model import EventContext, build_event
+from cecil.config import ObserverConfig
+from cecil.event_model import EventContext, build_event
 
 
 def _config(redaction_mode: str = "strict", snippets_enabled: bool = False) -> ObserverConfig:

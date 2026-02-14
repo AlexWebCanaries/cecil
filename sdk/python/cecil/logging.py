@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 
-LOGGER_NAME = "llm_observer"
+LOGGER_NAME = "cecil"
 
 
 def get_logger() -> logging.Logger:

@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import time
 
-from llm_observer.config import ObserverConfig
-from llm_observer.telemetry import TelemetryClient
+from cecil.config import ObserverConfig
+from cecil.telemetry import TelemetryClient
 
 
 def _config(queue_size: int = 64) -> ObserverConfig:
@@ -26,7 +26,7 @@ def _config(queue_size: int = 64) -> ObserverConfig:
 
 def test_immediate_shutdown_accounts_abandoned(monkeypatch) -> None:  # type: ignore[no-untyped-def]
     monkeypatch.setattr(
-        "llm_observer.telemetry.TelemetryClient._send_once", lambda self, event: False
+        "cecil.telemetry.TelemetryClient._send_once", lambda self, event: False
     )
     client = TelemetryClient(_config(queue_size=200))
 
@@ -50,7 +50,7 @@ def test_bounded_drain_timeout(monkeypatch) -> None:  # type: ignore[no-untyped-
         time.sleep(0.02)
         return True
 
-    monkeypatch.setattr("llm_observer.telemetry.TelemetryClient._send_once", slow_send)
+    monkeypatch.setattr("cecil.telemetry.TelemetryClient._send_once", slow_send)
     client = TelemetryClient(_config(queue_size=100))
 
     attempts = 40
@@ -71,7 +71,7 @@ def test_bounded_drain_timeout(monkeypatch) -> None:  # type: ignore[no-untyped-
 
 def test_large_queue_accounting(monkeypatch) -> None:  # type: ignore[no-untyped-def]
     monkeypatch.setattr(
-        "llm_observer.telemetry.TelemetryClient._send_once", lambda self, event: True
+        "cecil.telemetry.TelemetryClient._send_once", lambda self, event: True
     )
     client = TelemetryClient(_config(queue_size=1000))
 

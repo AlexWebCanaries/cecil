@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-import llm_observer
-from llm_observer.cost import load_pricing_catalog
-from llm_observer.schema import load_schema
+import cecil
+from cecil.cost import load_pricing_catalog
+from cecil.schema import load_schema
 
 
 def main() -> int:
-    exported = set(llm_observer.__all__)
+    exported = set(cecil.__all__)
     required = {"patch", "shutdown", "load_config", "build_event"}
     assert required.issubset(exported)
 
@@ -17,7 +17,7 @@ def main() -> int:
     assert pricing.version.startswith("pricing-")
     assert "gpt-4o-mini" in pricing.models
 
-    print(sorted(llm_observer.__all__))
+    print(sorted(cecil.__all__))
     print("wheel smoke check passed")
     return 0
 

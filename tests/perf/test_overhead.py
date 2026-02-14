@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import time
 
-from llm_observer.config import ObserverConfig
-from llm_observer.event_model import EventContext, build_event, reset_history
-from llm_observer.telemetry import TelemetryClient
+from cecil.config import ObserverConfig
+from cecil.event_model import EventContext, build_event, reset_history
+from cecil.telemetry import TelemetryClient
 
 
 def _config(local_only: bool = True) -> ObserverConfig:

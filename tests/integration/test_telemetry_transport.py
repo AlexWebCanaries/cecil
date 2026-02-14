@@ -5,8 +5,8 @@ import socketserver
 import threading
 from http.server import BaseHTTPRequestHandler
 
-from llm_observer.config import ObserverConfig
-from llm_observer.telemetry import TelemetryClient
+from cecil.config import ObserverConfig
+from cecil.telemetry import TelemetryClient
 
 
 class _Handler(BaseHTTPRequestHandler):

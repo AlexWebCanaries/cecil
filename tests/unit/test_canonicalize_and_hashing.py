@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from llm_observer.canonicalize import canonicalize_prompt
-from llm_observer.privacy import hash_prefix_blocks
+from cecil.canonicalize import canonicalize_prompt
+from cecil.privacy import hash_prefix_blocks
 
 
 def test_canonicalize_is_stable() -> None:

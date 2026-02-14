@@ -6,13 +6,13 @@ import uuid
 from collections import OrderedDict
 from dataclasses import asdict, dataclass
 
-from llm_observer.cache_analysis import detect_cache_breakers, prefix_similarity_score
-from llm_observer.canonicalize import canonicalize_prompt
-from llm_observer.config import ObserverConfig
-from llm_observer.cost import estimate_cost_usd
-from llm_observer.privacy import hash_prefix_blocks, redact_snippet
-from llm_observer.recommendations import build_recommendation
-from llm_observer.savings import estimate_cache_savings
+from cecil.cache_analysis import detect_cache_breakers, prefix_similarity_score
+from cecil.canonicalize import canonicalize_prompt
+from cecil.config import ObserverConfig
+from cecil.cost import estimate_cost_usd
+from cecil.privacy import hash_prefix_blocks, redact_snippet
+from cecil.recommendations import build_recommendation
+from cecil.savings import estimate_cache_savings
 
 
 @dataclass

@@ -30,7 +30,7 @@ class CostEstimate:
 
 
 def _pricing_path() -> Path:
-    with resources.as_file(resources.files("llm_observer.data") / "pricing_v1.json") as p:
+    with resources.as_file(resources.files("cecil.data") / "pricing_v1.json") as p:
         return p
 
 

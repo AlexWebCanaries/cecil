@@ -12,5 +12,5 @@ Enforced by:
 
 Snippet mode:
 - disabled by default
-- requires `LLM_OBSERVER_REDACTION_MODE=redacted_snippets` and `LLM_OBSERVER_SNIPPETS_ENABLED=true`
+- requires `CECIL_REDACTION_MODE=redacted_snippets` and `CECIL_SNIPPETS_ENABLED=true`
 - deterministic redaction for secret markers, emails, phone-like values, and long numeric strings

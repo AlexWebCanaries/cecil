@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from llm_observer.recommendations import build_recommendation
+from cecil.recommendations import build_recommendation
 
 
 def test_recommendation_surface_contains_actions() -> None:

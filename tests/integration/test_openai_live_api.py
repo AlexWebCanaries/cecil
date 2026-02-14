@@ -4,18 +4,18 @@ import os
 from importlib.metadata import version as pkg_version
 
 import pytest
-from llm_observer.adapters.common import extract_token_counts
-from llm_observer.config import ObserverConfig
-from llm_observer.cost import estimate_cost_usd
-from llm_observer.patcher import patch
+from cecil.adapters.common import extract_token_counts
+from cecil.config import ObserverConfig
+from cecil.cost import estimate_cost_usd
+from cecil.patcher import patch
 
-RUN_LIVE = os.getenv("LLM_OBSERVER_RUN_LIVE_OPENAI") == "1"
+RUN_LIVE = os.getenv("CECIL_RUN_LIVE_OPENAI") == "1"
 LIVE_CONFIRM = (
-    os.getenv("LLM_OBSERVER_LIVE_TEST_CONFIRM") == "I_UNDERSTAND_AND_ACCEPT_LIVE_API_RISK"
+    os.getenv("CECIL_LIVE_TEST_CONFIRM") == "I_UNDERSTAND_AND_ACCEPT_LIVE_API_RISK"
 )
 pytestmark = pytest.mark.skipif(
     not RUN_LIVE,
-    reason="Live OpenAI API tests are opt-in. Set LLM_OBSERVER_RUN_LIVE_OPENAI=1 to run.",
+    reason="Live OpenAI API tests are opt-in. Set CECIL_RUN_LIVE_OPENAI=1 to run.",
 )
 
 
@@ -56,7 +56,7 @@ def live_openai_settings() -> dict[str, object]:
         pytest.skip("OPENAI_API_KEY is required for live OpenAI tests")
     if not LIVE_CONFIRM:
         pytest.skip(
-            "Set LLM_OBSERVER_LIVE_TEST_CONFIRM="
+            "Set CECIL_LIVE_TEST_CONFIRM="
             "I_UNDERSTAND_AND_ACCEPT_LIVE_API_RISK to run live tests."
         )
     if _looks_placeholder_key(api_key):
@@ -127,7 +127,7 @@ def _patch_and_capture(monkeypatch: pytest.MonkeyPatch) -> list[dict[str, object
     def capture_emit(self, event: dict[str, object]) -> None:  # type: ignore[no-untyped-def]
         captured.append(event)
 
-    monkeypatch.setattr("llm_observer.telemetry.TelemetryClient.emit", capture_emit)
+    monkeypatch.setattr("cecil.telemetry.TelemetryClient.emit", capture_emit)
 
     config = ObserverConfig(
         enabled=False,

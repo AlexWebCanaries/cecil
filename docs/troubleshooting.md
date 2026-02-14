@@ -1,8 +1,8 @@
 # Troubleshooting
 
 ## No telemetry is sent
-- Check `LLM_OBSERVER_ENABLED=true`.
-- Ensure both `LLM_OBSERVER_API_KEY` and `LLM_OBSERVER_ENDPOINT` are set.
+- Check `CECIL_ENABLED=true`.
+- Ensure both `CECIL_API_KEY` and `CECIL_ENDPOINT` are set.
 - Verify endpoint is reachable.
 
 ## Provider SDK behavior changes unexpectedly

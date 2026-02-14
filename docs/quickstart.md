@@ -11,8 +11,8 @@ pip install -e '.[dev]'
 2. Patch provider SDKs:
 
 ```python
-import llm_observer
-llm_observer.patch()
+import cecil
+cecil.patch()
 ```
 
 3. Run your existing OpenAI/Anthropic code. SDK failures are fail-open and do not block LLM calls.

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from llm_observer.cache_analysis import detect_cache_breakers, prefix_similarity_score
+from cecil.cache_analysis import detect_cache_breakers, prefix_similarity_score
 
 
 def test_prefix_similarity_stable_for_equivalent_noise() -> None:

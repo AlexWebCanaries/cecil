@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from llm_observer.cache_analysis import prefix_similarity_score
-from llm_observer.canonicalize import canonicalize_prompt
+from cecil.cache_analysis import prefix_similarity_score
+from cecil.canonicalize import canonicalize_prompt
 
 
 def test_similarity_with_formatting_noise_is_stable() -> None:

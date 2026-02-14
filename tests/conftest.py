@@ -4,8 +4,8 @@ import sys
 import types
 
 import pytest
-from llm_observer.event_model import reset_history
-from llm_observer.patcher import shutdown
+from cecil.event_model import reset_history
+from cecil.patcher import shutdown
 
 
 @pytest.fixture(autouse=True)

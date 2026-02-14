@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from llm_observer.adapters.common import extract_prompt
+from cecil.adapters.common import extract_prompt
 
 
 def test_extract_prompt_handles_structured_content_blocks() -> None:

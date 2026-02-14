@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import importlib
 
-from llm_observer.config import ObserverConfig
-from llm_observer.patcher import patch
+from cecil.config import ObserverConfig
+from cecil.patcher import patch
 
 
 def test_openai_adapter_emits_normalized_event(fake_openai_module, monkeypatch) -> None:  # type: ignore[no-untyped-def]
@@ -12,7 +12,7 @@ def test_openai_adapter_emits_normalized_event(fake_openai_module, monkeypatch) 
     def capture_emit(self, event: dict[str, object]) -> None:  # type: ignore[no-untyped-def]
         captured.append(event)
 
-    monkeypatch.setattr("llm_observer.telemetry.TelemetryClient.emit", capture_emit)
+    monkeypatch.setattr("cecil.telemetry.TelemetryClient.emit", capture_emit)
 
     config = ObserverConfig(
         enabled=False,

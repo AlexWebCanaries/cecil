@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import jsonschema
 import pytest
-from llm_observer.config import ObserverConfig
-from llm_observer.event_model import EventContext, build_event
-from llm_observer.schema import validate_event
+from cecil.config import ObserverConfig
+from cecil.event_model import EventContext, build_event
+from cecil.schema import validate_event
 
 
 def test_event_validates_against_schema() -> None:

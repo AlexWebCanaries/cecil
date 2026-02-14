@@ -1,4 +1,4 @@
-import llm_observer
+import cecil
 
-llm_observer.patch()
-print("llm-observer patched (local-only by default)")
+cecil.patch()
+print("cecil-sdk patched (local-only by default)")

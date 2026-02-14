@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from llm_observer.config import load_config
-from llm_observer.privacy import redact_snippet
+from cecil.config import load_config
+from cecil.privacy import redact_snippet
 
 
 def test_invalid_privacy_mode_falls_back(monkeypatch) -> None:  # type: ignore[no-untyped-def]
-    monkeypatch.setenv("LLM_OBSERVER_PRIVACY_MODE", "unsafe_mode")
+    monkeypatch.setenv("CECIL_PRIVACY_MODE", "unsafe_mode")
     config = load_config()
     assert config.privacy_mode == "hash_only"
 

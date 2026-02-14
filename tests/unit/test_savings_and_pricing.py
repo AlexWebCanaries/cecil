@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from llm_observer.cost import estimate_cost_usd, load_pricing_catalog
-from llm_observer.savings import estimate_cache_savings
+from cecil.cost import estimate_cost_usd, load_pricing_catalog
+from cecil.savings import estimate_cache_savings
 
 
 def test_pricing_catalog_is_versioned() -> None:

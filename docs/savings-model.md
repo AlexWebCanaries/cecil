@@ -7,8 +7,8 @@ Computation:
 - confidence scales with similarity and is capped to `[0,1]`
 
 Configuration:
-- `LLM_OBSERVER_SAVINGS_FACTOR` (default `0.3`)
-- `LLM_OBSERVER_SAVINGS_MIN_SIMILARITY` (default `0.15`)
+- `CECIL_SAVINGS_FACTOR` (default `0.3`)
+- `CECIL_SAVINGS_MIN_SIMILARITY` (default `0.15`)
 
 Safety:
 - Unknown model cost yields zero savings and zero confidence.

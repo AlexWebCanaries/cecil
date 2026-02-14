@@ -3,8 +3,8 @@ from __future__ import annotations
 import sys
 import types
 
-from llm_observer.config import ObserverConfig
-from llm_observer.patcher import patch
+from cecil.config import ObserverConfig
+from cecil.patcher import patch
 
 
 def _config() -> ObserverConfig:
@@ -68,7 +68,7 @@ def test_patch_late_provider_availability(monkeypatch) -> None:  # type: ignore[
         state["count"] += 1
         return state["count"] >= 2
 
-    monkeypatch.setattr("llm_observer.patcher.patch_openai", patch_openai_late)
+    monkeypatch.setattr("cecil.patcher.patch_openai", patch_openai_late)
 
     first = patch(_config())
     assert first.openai_patched is False

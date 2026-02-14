@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor
 
-from llm_observer.config import ObserverConfig
-from llm_observer.event_model import EventContext, _history_for_size, build_event, reset_history
+from cecil.config import ObserverConfig
+from cecil.event_model import EventContext, _history_for_size, build_event, reset_history
 
 
 def _config(history_size: int) -> ObserverConfig:
