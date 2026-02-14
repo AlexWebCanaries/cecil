@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cecil-sdk"
-version = "0.2.1"
+version = "0.2.2"
 description = "Lightweight LLM observability SDK with privacy-first defaults"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -39,10 +39,10 @@ live_openai = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/cecil-sdk/cecil-python"
-Repository = "https://github.com/cecil-sdk/cecil-python"
-Issues = "https://github.com/cecil-sdk/cecil-python/issues"
-Documentation = "https://github.com/cecil-sdk/cecil-python/tree/main/docs"
+Homepage = "https://github.com/AlexWebCanaries/cecil"
+Repository = "https://github.com/AlexWebCanaries/cecil"
+Issues = "https://github.com/AlexWebCanaries/cecil/issues"
+Documentation = "https://github.com/AlexWebCanaries/cecil/tree/main/docs"
 
 [tool.setuptools]
 package-dir = {"" = "sdk/python"}
